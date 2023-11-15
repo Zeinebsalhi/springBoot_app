@@ -5,8 +5,25 @@ import java.time.LocalDate;
 public class Student {
     private String first_name;
     private String last_name;
+    private String email;
     private int age;
     private LocalDate date_birth;
+
+    public Student(String first_name, String last_name, String email, int age, LocalDate date_birth) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.age = age;
+        this.date_birth = date_birth;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getFirst_name() {
         return first_name;
@@ -40,10 +57,5 @@ public class Student {
         this.date_birth = date_birth;
     }
 
-    public Student(String first_name, String last_name, int age, LocalDate date_birth) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.age = age;
-        this.date_birth = date_birth;
-    }
+
 }

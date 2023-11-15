@@ -3,9 +3,7 @@ package com.demo.student.Controller;
 import com.demo.student.Entité.Student;
 import com.demo.student.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,10 +15,16 @@ public class studentController {
      //private StudentService service= new StudentService(); // creation d'une instance de studentservice on la remplace par:
     private StudentService service; //field injection
 
-
     public studentController(StudentService service) { //constructor injection without @autowired
         this.service = service;
     }
+    @PostMapping("/add")
+    public Student save( @RequestBody Student student){
+        //(Student student is an object; spring will serialize and map this object from json to Student object, it requires @requestBody
+        return service.save(student);
+    }
+
+
 
     @GetMapping("/students")
     public List<Student> findAllStudents(){
