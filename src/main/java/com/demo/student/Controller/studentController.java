@@ -23,8 +23,20 @@ public class studentController {
         //(Student student is an object; spring will serialize and map this object from json to Student object, it requires @requestBody
         return service.save(student);
     }
+    @GetMapping("/{email}") // to tell spring this is an HTTP operation
+    public Student findByEmail(@PathVariable String email){
+        return service.findByEmail(email);
+    }
 
+    @PutMapping("/update")
+    public Student update(@RequestBody Student  student){
+        return service.update(student);
+     }
 
+@DeleteMapping("/{email}")
+     public void delete(@PathVariable("email") String email){
+        service.delete(email);
+     }
 
     @GetMapping("/students")
     public List<Student> findAllStudents(){
